@@ -36,4 +36,3 @@ To get the hang of gameplay, here is an [online version to play](http://www.play
 - Allow the user to choose their difficulty level: higher levels will have words or phrases with more letters. You determine the specific logic that will deterine a low, medium, high level, for example.
 - Handle inappropriate user input. For example, what happens when a user enters an exclamation point.
 
-### [Rubric](../rubrics/week_2_hangman.md)
