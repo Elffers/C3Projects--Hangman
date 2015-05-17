@@ -1,4 +1,4 @@
-# HANGMAN RUBRIC
+# Amira Hailemariam - HANGMAN RUBRIC
 
 1=Beginner, 2=Proficient, 3=Master
 
