@@ -1,4 +1,4 @@
-# HANGMAN RUBRIC
+# Brandi Wilson - HANGMAN RUBRIC
 
 1=Beginner, 2=Proficient, 3=Master
 
