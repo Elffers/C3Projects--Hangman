@@ -1,27 +1,19 @@
 require "colorize"
 
 class Hangman
+  WORD_CHOICES = ["cheeseburger", "cat", "dog", "whatever", "mississippi", "octothorpe", "splat", "bang"]
 
   def initialize
-    @word_choices = ["cheeseburger", "cat", "dog", "whatever", "mississippi", "octothorpe", "splat", "bang"]
-    @answer = populate_answer
+    @answer = WORD_CHOICES.sample.chars
     @wrong_counter = 0
     @wrong_answers = []
     @blank_answer_row = "_ " * @answer.length
     @answer_output = @blank_answer_row.split(' ')
 
-  # Comment line below to show/hide answer
-    #puts @answer
-
     puts @blank_answer_row
     user_prompt
   end
 
-  #randomly selects a word from the list
-  def populate_answer
-    random = @word_choices[rand(0...@word_choices.length)]
-    random = random.split(//)
-  end
 
 #--------------------------------------------------------
 # USER INPUT
