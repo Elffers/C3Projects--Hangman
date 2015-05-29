@@ -13,52 +13,51 @@ class Hangman
     @answer_output = @blank_answer_row.split(' ')
   end
 
-
 #--------------------------------------------------------
 # USER INPUT
 
 # Generates art/prompts for user interface
   def user_prompt
-    # Compares user guess with answer
     until @answer == @answer_output
       print_art
       puts "\nPlease enter a letter."
       puts "\nWRONG GUESSES:" + @wrong_answers.join(" ") + "\n"
       puts "YOUR GUESS:"
-      @guess = gets.chomp.downcase
-      check_user_input
+      guess = gets.chomp.downcase
+      check_user_input(guess)
 
-        # if the answer array includes the guess letter
-        if @answer.include?(@guess)
+        if @answer.include?(guess)
           # setting it to replace the spaces in answer_output with the correctly guessed letters
+          answer_output
           @answer.each_index do |x|
-            if @answer[x] == @guess
-              @answer_output[x] = @guess
+            if @answer[x] == guess
+              @answer_output[x] = guess
             end
           end
 
         else
           #keeping track of wrong guesses
           @wrong_counter += 1
-          @wrong_answers.push(@guess)
+          @wrong_answers.push(guess)
         end
         #displaying wrong guesses to user
         puts @answer_output.join(" ")
 
     end
-    # win condition
     puts "CONGRATULATIONS! YOU WIN!"
   end
 
-  def check_user_input
+  private
+
+  def answer_output
+  end
+
+  def check_user_input(guess)
     #searching for alphabetical input and accounting for the edgecase of "0"
-    while @guess.length > 1 || @guess.to_i != 0 || @guess == "0"
-
+    while guess.length > 1 || guess.to_i != 0 || guess == "0"
       puts "Please enter a valid character."
-      @guess = gets.chomp.downcase
-
+      guess = gets.chomp.downcase
     end
-
   end
 
 # Generates ascii dragon art
@@ -161,7 +160,6 @@ class Hangman
 
     end
   end
-
 
 end
 
