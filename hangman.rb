@@ -63,7 +63,8 @@ class Hangman
 
 # Generates ascii dragon art
   def print_art
-    if @wrong_counter == 0
+    case @wrong_counter
+    when 0
       puts "
                 ._____.
               .          .
@@ -77,7 +78,7 @@ class Hangman
                 ;.____.;
     ".colorize(:green)
 
-    elsif @wrong_counter == 1
+    when 1
       puts "
                 ._____.
               .          .
@@ -91,7 +92,7 @@ class Hangman
                 ;.____.;
     ".colorize(:light_black)
 
-    elsif @wrong_counter == 2
+    when 2
       puts "
                 .__^__.
               .           .
@@ -105,7 +106,7 @@ class Hangman
                 ;.____.;
     ".colorize(:white)
 
-    elsif @wrong_counter == 3
+    when 3
       puts "
                    (\\^~^/)
                     )d b(
@@ -120,7 +121,8 @@ class Hangman
               :  \\       /  /
       ---------.  |      | .---------
     ".colorize(:yellow)
-    elsif @wrong_counter == 4
+
+    when 4
       puts "
                  (\\^~^/)
           ._____  )d b(  _____.
@@ -135,7 +137,8 @@ class Hangman
       ---------. \\       .---------
                  ;.____.;
     ".colorize(:magenta)
-    elsif @wrong_counter == 5
+
+    when 5
       puts "
            (\\               /)
           __)\\             /(__
