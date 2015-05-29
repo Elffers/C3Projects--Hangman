@@ -3,15 +3,14 @@ require "colorize"
 class Hangman
   WORD_CHOICES = ["cheeseburger", "cat", "dog", "whatever", "mississippi", "octothorpe", "splat", "bang"]
 
+  attr_reader :blank_answer_row
+
   def initialize
     @answer = WORD_CHOICES.sample.chars
     @wrong_counter = 0
     @wrong_answers = []
     @blank_answer_row = "_ " * @answer.length
     @answer_output = @blank_answer_row.split(' ')
-
-    puts @blank_answer_row
-    user_prompt
   end
 
 
@@ -163,4 +162,8 @@ class Hangman
 
 end
 
-Hangman.new
+if $0 == __FILE__
+  hangman = Hangman.new
+  puts hangman.blank_answer_row
+  hangman.user_prompt
+end
