@@ -6,11 +6,11 @@ class Hangman
   attr_reader :blank_answer_row
 
   def initialize
-    @answer = WORD_CHOICES.sample.chars
+    @answer = WORD_CHOICES.sample
     @wrong_counter = 0
     @wrong_answers = []
+    @correct_guesses = " "
     @blank_answer_row = "_ " * @answer.length
-    @answer_output = @blank_answer_row.split(' ')
   end
 
 #--------------------------------------------------------
@@ -18,7 +18,7 @@ class Hangman
 
 # Generates art/prompts for user interface
   def user_prompt
-    until @answer == @answer_output
+    until @answer == answer_output
       print_art
       puts "\nPlease enter a letter."
       puts "\nWRONG GUESSES:" + @wrong_answers.join(" ") + "\n"
@@ -27,22 +27,13 @@ class Hangman
       check_user_input(guess)
 
         if @answer.include?(guess)
-          # setting it to replace the spaces in answer_output with the correctly guessed letters
-          answer_output
-          @answer.each_index do |x|
-            if @answer[x] == guess
-              @answer_output[x] = guess
-            end
-          end
-
+          @correct_guesses.concat guess
         else
-          #keeping track of wrong guesses
           @wrong_counter += 1
           @wrong_answers.push(guess)
         end
-        #displaying wrong guesses to user
-        puts @answer_output.join(" ")
 
+        puts answer_output.chars.join(" ")
     end
     puts "CONGRATULATIONS! YOU WIN!"
   end
@@ -50,6 +41,7 @@ class Hangman
   private
 
   def answer_output
+    @answer.tr("^#{@correct_guesses}", "_")
   end
 
   def check_user_input(guess)
